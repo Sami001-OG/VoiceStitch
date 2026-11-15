@@ -1,0 +1,6 @@
+{
+  "name": "VoiceStitch — Sequential Audio & MP3 Merger",
+  "description": "Zero-database, 100% browser-based tool to upload MP3 and voice clips and stitch them seamlessly one after another.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
