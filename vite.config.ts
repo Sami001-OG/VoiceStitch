@@ -2,11 +2,23 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
+import {injectAbsoluteSocialUrls, resolveDeployBaseUrl} from './src/utils/seoConfig';
 
 export default defineConfig(() => {
+  const deployBaseUrl = resolveDeployBaseUrl(process.env);
+
   return {
     base: './',
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'resolve-social-meta-urls',
+        transformIndexHtml(html) {
+          return injectAbsoluteSocialUrls(html, deployBaseUrl);
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
